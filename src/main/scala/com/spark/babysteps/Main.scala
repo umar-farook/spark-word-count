@@ -14,5 +14,6 @@ object Main extends App {
   //Top 10 Words
   val result = data.flatMap(_.split("\\W+")).map(_ -> 1).reduceByKey(_ + _).map(x => x._2 -> x._1).sortByKey(false).map(x => s"${x._2} : ${x._1}").take(10)
   result.foreach(println)
+  spark.stop
 
 }

@@ -37,5 +37,6 @@ object Top3SalaryEachDep extends App {
   val employeeWithDep = employeeTop3.map(x => (x.depId, x)).join(departmentDetails.map(x => (x.id, x.name))).map(x => s"${x._2._1.name} - ${x._2._1.salary} - ${x._2._2}").collect
 
   employeeWithDep.foreach(println)
+  spark.stop()
 
 }
